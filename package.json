@@ -1,0 +1,25 @@
+{
+  "name": "rnprojectserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmitPLevy/rnProjectServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmitPLevy/rnProjectServer/issues"
+  },
+  "homepage": "https://github.com/AmitPLevy/rnProjectServer#readme",
+  "dependencies": {
+    "express": "^4.17.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.5.10",
+    "node-schedule": "^1.3.2"
+  }
+}
