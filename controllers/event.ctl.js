@@ -5,12 +5,24 @@ const moment = require("moment");
 
 exports.getEventsForDog = (req, res) => {
   const nickName = req.query.nickName;
-
+  let resultToSend = [];
+  let numOfwalks = 0;
   Event.find({
     nickName: nickName
   })
-    .then(result => {
-      return res.send(result);
+    .then(results => {
+      results.map(result => {
+        numOfwalks = result.Trips.length;
+        resultToSend.push({
+          Date: result.Date,
+          Trips: result.Trips,
+          Snacks: result.Snacks,
+          Poops: result.Poops,
+          Meals: result.Meals,
+          numOfwalks: numOfwalks
+        });
+      });
+      return res.send(resultToSend);
     })
     .catch(err => {
       return res.send(errobj(500, err));
@@ -139,8 +151,9 @@ exports.getEventsForDogForCurrentDate = (req, res) => {
         let numOfWalks = result[0].Trips.length;
         let sunOfKm = 0;
         result[0].Trips.map(arr => {
-          if (arr[0].distance !== undefined) {
+          if (arr[0].distance !== undefined && !isNaN(arr[0].distance)) {
             sunOfKm += Number(arr[0].distance);
+            console.log(Number(arr[0].distance));
           }
         });
         resultToSend = {
@@ -148,6 +161,7 @@ exports.getEventsForDogForCurrentDate = (req, res) => {
           numOfWalks: numOfWalks,
           sunOfKm: sunOfKm
         };
+
         return res.send(resultToSend);
       } else {
         return res.send([]);
