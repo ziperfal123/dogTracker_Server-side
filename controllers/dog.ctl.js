@@ -37,6 +37,7 @@ exports.dogsSignUp = (req, res) => {
     Name: dog.nickName
   })
     .then(result => {
+      console.log(result);
       if (result.length !== 0)
         return res.send(errobj(500, "Dog with this nickName allready exists"));
       else {
