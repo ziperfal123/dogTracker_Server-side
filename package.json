@@ -18,7 +18,7 @@
   "homepage": "https://github.com/AmitPLevy/rnProjectServer#readme",
   "dependencies": {
     "express": "^4.17.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mongoose": "^5.5.10",
     "node-schedule": "^1.3.2"
   }
